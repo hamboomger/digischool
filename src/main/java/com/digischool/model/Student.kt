@@ -1,9 +1,14 @@
 package com.digischool.model
 
+import javax.persistence.Entity
+import javax.persistence.Inheritance
+import javax.persistence.InheritanceType
+
 /**
  * @author ddorochov
  */
-class Student(
+@Entity
+open class Student(
         name: String,
         surname: String,
         email: String,

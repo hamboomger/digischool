@@ -12,12 +12,4 @@ class LoginView : View() {
     override val root = borderpane {
         center(LoginForm::class)
     }
-
-//    val loginForm: LoginForm by inject()
-
-//    init {
-//        with(root) {
-//            center = loginForm.root
-//        }
-//    }
 }
