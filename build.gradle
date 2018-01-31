@@ -25,13 +25,17 @@ dependencies {
             name: 'tornadofx',
             version: '1.7.12'
 
+    compile group: 'org.springframework',
+            name: 'spring-context',
+            version: '5.0.3.RELEASE'
+
     testCompile group: 'junit',
             name: 'junit',
             version: '4.12'
 }
 
 buildscript {
-    ext.kotlin_version = '1.1.4'
+    ext.kotlin_version = '1.1.51'
     repositories {
         mavenCentral()
     }
