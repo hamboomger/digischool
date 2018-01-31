@@ -1,29 +1,35 @@
 package com.digischool.view.auth
 
-import com.digischool.dto.UserCredentials
 import tornadofx.*
 
 /**
  * @author ddorochov
  */
-class LoginForm : View("Login") {
-    private val userModel = UserCredentialsModel(UserCredentials("ala", "ma cota"))
+class LoginFormView : View("Login") {
+    private val userModel = UserCredentialsModel(UserCredentials())
 
     override val root = form {
         fieldset("User credentials") {
             field("Login") {
-                textfield().bind(userModel.login)
+                textfield(userModel.login) {
+                    required()
+                }
             }
 
             field("Password") {
-                passwordfield().bind(userModel.password)
+                passwordfield(userModel.password).required()
             }
 
             button("Save") {
-                enableWhen(userModel.dirty)
-
+                enableWhen(userModel.valid)
             }
+
         }
+    }
+
+    init {
+        userModel.validate(decorateErrors = false)
+        setWindowMinSize(400, 150)
     }
 
     class UserCredentialsModel(val user: UserCredentials) : ViewModel() {
