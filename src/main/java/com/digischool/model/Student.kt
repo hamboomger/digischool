@@ -1,22 +1,28 @@
 package com.digischool.model
 
-import javax.persistence.Entity
-import javax.persistence.Inheritance
-import javax.persistence.InheritanceType
+import javax.persistence.*
 
 /**
  * @author ddorochov
  */
 @Entity
 open class Student(
+        id: Int,
         name: String,
         surname: String,
         email: String,
         login: String,
         password: String,
-        val index: Int,
-        val interestGroups: List<InterestGroup> = mutableListOf(),
-        val diplomas: List<Diploma> = mutableListOf(),
-        val studyProgress: StudyProgress = StudyProgress(),
-        val teachersOpinion: Map<String, Int> = mutableMapOf() // teacher's login, grade from 2 to 5
-) : User(name, surname, email, login, password)
+
+        @Column(name = "studentIndex")
+        var index: Int,
+
+        @ManyToMany(targetEntity = InterestGroup::class)
+        var interestGroups: List<InterestGroup> = mutableListOf(),
+
+        @ManyToMany(targetEntity = Diploma::class)
+        var diplomas: List<Diploma> = mutableListOf(),
+
+        @Embedded
+        var studyProgress: StudyProgress = StudyProgress()
+) : User(id, name, surname, email, login, password)

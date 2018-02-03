@@ -1,15 +1,24 @@
 package com.digischool.model
 
+import javax.persistence.CascadeType
+import javax.persistence.Embeddable
+import javax.persistence.OneToMany
+
 /**
  * @author ddorochov
  */
+@Embeddable
 class StudyProgress(
-    val subjectsStatuses: List<StudentSubjectStatus> = mutableListOf()
+        @OneToMany(
+                targetEntity = StudentSubjectStatus::class,
+                cascade = arrayOf(CascadeType.ALL)
+        )
+        val subjectsStatuses: List<StudentSubjectStatus> = mutableListOf()
 ) {
+
     val completedSubjects : List<Subject>
-        get() {
-            return subjectsStatuses
+        get() = subjectsStatuses
                     .filter { it.completed }
                     .map { it.subject }
-        }
+
 }

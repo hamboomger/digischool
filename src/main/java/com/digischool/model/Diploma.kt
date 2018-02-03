@@ -1,6 +1,16 @@
 package com.digischool.model
 
+import javax.persistence.*
+
 /**
  * @author ddorochov
  */
-class Diploma(minimalSubjectsResult: Map<Subject, Int>)
+@Entity
+class Diploma(
+        @Id
+        @GeneratedValue
+        val id: Int,
+
+        @OneToMany(targetEntity = SubjectResult::class)
+        val minimalSubjectsResult: List<SubjectResult>
+)

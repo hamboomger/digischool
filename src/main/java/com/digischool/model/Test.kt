@@ -1,6 +1,16 @@
 package com.digischool.model
 
+import javax.persistence.*
+
 /**
  * @author ddorochov
  */
-class Test(val questions: List<Question>)
+@Entity
+class Test(
+        @Id
+        @GeneratedValue
+        val id: Int,
+
+        @OneToMany(targetEntity = Question::class, cascade = arrayOf(CascadeType.REMOVE))
+        val questions: List<Question>
+)

@@ -7,9 +7,19 @@ import javax.persistence.*
  */
 @MappedSuperclass
 open class User(
-        val name: String,
-        val surname: String,
-        val email: String,
-        val login: String,
-        val password: String
-)
+        @Id
+        @GeneratedValue
+        var id: Int,
+        var name: String,
+        var surname: String,
+
+        @Column(unique = true)
+        var email: String,
+
+        @Column(unique = true)
+        var login: String,
+        var password: String
+) {
+    /** Empty constructor */
+    constructor() : this(-1, "", "", "", "", "")
+}
