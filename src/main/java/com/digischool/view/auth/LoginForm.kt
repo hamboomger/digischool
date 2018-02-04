@@ -2,7 +2,6 @@ package com.digischool.view.auth
 
 import com.digischool.controller.AuthorizationController
 import com.digischool.view.auth.dto.UserLoginCredentials
-import com.digischool.view.auth.registration.BaseRegistrationForm
 import javafx.geometry.Pos
 import tornadofx.*
 
@@ -27,7 +26,11 @@ class LoginForm : View("Login") {
 
             hbox {
                 hyperlink("Sign up").action {
-                    replaceWith(BaseRegistrationForm::class)
+                    replaceWith(
+                            component = StudentRegistrationWizard::class,
+                            centerOnScreen = true,
+                            transition = ViewTransition.Swap(1500.millis)
+                    )
                 }
 
                 button("Log in") {
@@ -36,16 +39,17 @@ class LoginForm : View("Login") {
 
                     }
                 }
-
-                alignment = Pos.CENTER_RIGHT
             }
 
         }
     }
 
+    override fun onCreate() {
+        super.onCreate()
+    }
+
     init {
         userModel.validate(decorateErrors = false)
-        setWindowMinSize(400, 150)
     }
 
     class UserCredentialsModel(val user: UserLoginCredentials) : ViewModel() {

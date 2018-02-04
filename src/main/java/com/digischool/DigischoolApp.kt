@@ -1,6 +1,7 @@
 package com.digischool
 
 import com.digischool.view.auth.LoginForm
+import javafx.stage.Stage
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.context.ConfigurableApplicationContext
