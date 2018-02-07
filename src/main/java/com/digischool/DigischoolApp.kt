@@ -1,15 +1,11 @@
 package com.digischool
 
-import com.digischool.view.auth.LoginForm
-import javafx.stage.Stage
-import org.springframework.boot.SpringApplication
+import com.digischool.login.LoginForm
+import javafx.scene.Scene
 import org.springframework.boot.autoconfigure.SpringBootApplication
-import org.springframework.context.ConfigurableApplicationContext
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories
 import tornadofx.App
-import tornadofx.DIContainer
-import tornadofx.FX
-import kotlin.reflect.KClass
+import tornadofx.UIComponent
 
 /**
  * @author ddorochov
@@ -29,8 +25,8 @@ class DigischoolApp : App(LoginForm::class) {
 //        }
     }
 
-    override fun stop() {
-//        springContext.stop()
+    override fun createPrimaryScene(view: UIComponent): Scene {
+        return super.createPrimaryScene(view)
     }
 
 }

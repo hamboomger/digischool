@@ -1,4 +1,4 @@
-package com.digischool.view.auth
+package com.digischool.registration
 
 import tornadofx.Wizard
 

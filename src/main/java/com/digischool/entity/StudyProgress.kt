@@ -1,4 +1,4 @@
-package com.digischool.model
+package com.digischool.entity
 
 import javax.persistence.CascadeType
 import javax.persistence.Embeddable

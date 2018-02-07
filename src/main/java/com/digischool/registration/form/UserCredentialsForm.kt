@@ -1,6 +1,6 @@
-package com.digischool.view.auth.registration
+package com.digischool.registration.form
 
-import com.digischool.model.User
+import com.digischool.entity.User
 import tornadofx.*
 
 /**

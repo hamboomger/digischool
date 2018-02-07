@@ -1,4 +1,4 @@
-package com.digischool.controller
+package com.digischool.login
 
 import com.digischool.repository.StudentRepository
 import org.springframework.stereotype.Controller
@@ -20,4 +20,5 @@ class AuthorizationController(val studentRepository: StudentRepository) {
             return null
         }
     }
+
 }

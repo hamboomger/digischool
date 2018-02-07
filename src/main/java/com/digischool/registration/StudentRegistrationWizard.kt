@@ -1,7 +1,7 @@
-package com.digischool.view.auth
+package com.digischool.registration
 
-import com.digischool.view.auth.registration.PersonalDataForm
-import com.digischool.view.auth.registration.UserCredentialsForm
+import com.digischool.registration.form.PersonalDataForm
+import com.digischool.registration.form.UserCredentialsForm
 import tornadofx.Wizard
 
 /**
@@ -9,6 +9,9 @@ import tornadofx.Wizard
  */
 class StudentRegistrationWizard : Wizard("Registration", "Students registration form") {
     init {
+        root.prefWidth = 500.0
+        root.prefHeight = 500.0
+
         add(PersonalDataForm::class)
         add(UserCredentialsForm::class)
     }

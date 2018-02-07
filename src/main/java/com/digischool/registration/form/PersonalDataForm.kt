@@ -1,6 +1,6 @@
-package com.digischool.view.auth.registration
+package com.digischool.registration.form
 
-import com.digischool.model.User
+import com.digischool.entity.User
 import tornadofx.*
 
 /**
@@ -27,6 +27,10 @@ class PersonalDataForm : View("Personal data") {
         val name = bind { item?.observable(User::name) }
         val surname = bind { item?.observable(User::surname) }
         val email = bind { item?.observable(User::email) }
+    }
+
+    override fun onSave() {
+        isComplete = user.commit()
     }
 
 }

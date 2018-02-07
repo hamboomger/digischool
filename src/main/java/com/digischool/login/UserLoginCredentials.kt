@@ -1,4 +1,4 @@
-package com.digischool.view.auth.dto
+package com.digischool.login
 
 import tornadofx.getProperty
 import tornadofx.property

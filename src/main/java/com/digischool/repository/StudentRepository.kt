@@ -1,6 +1,6 @@
 package com.digischool.repository
 
-import com.digischool.model.Student
+import com.digischool.entity.Student
 import org.springframework.data.repository.CrudRepository
 import org.springframework.stereotype.Repository
 
@@ -10,4 +10,5 @@ import org.springframework.stereotype.Repository
 @Repository
 interface StudentRepository: CrudRepository<Student, Int> {
     fun findByLoginAndPassword(login: String, password: String): Student?
+    fun findByStudentIndex(index: Int): Student?
 }

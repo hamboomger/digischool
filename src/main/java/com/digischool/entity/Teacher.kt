@@ -1,4 +1,4 @@
-package com.digischool.model
+package com.digischool.entity
 
 import javax.persistence.Entity
 import javax.persistence.ManyToMany

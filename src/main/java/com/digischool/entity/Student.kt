@@ -1,6 +1,8 @@
-package com.digischool.model
+package com.digischool.entity
 
 import javax.persistence.*
+import javax.validation.constraints.Max
+import javax.validation.constraints.Min
 
 /**
  * @author ddorochov
@@ -15,6 +17,8 @@ open class Student(
         password: String,
 
         @Column(name = "studentIndex")
+        @Min(5)
+        @Max(5)
         var index: Int,
 
         @ManyToMany(targetEntity = InterestGroup::class)

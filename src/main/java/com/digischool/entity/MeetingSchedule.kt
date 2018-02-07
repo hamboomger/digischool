@@ -1,4 +1,4 @@
-package com.digischool.model
+package com.digischool.entity
 
 import java.time.DayOfWeek
 import java.time.LocalDate
