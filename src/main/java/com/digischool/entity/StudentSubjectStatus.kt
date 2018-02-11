@@ -1,5 +1,6 @@
 package com.digischool.entity
 
+import com.digischool.user.Student
 import javax.persistence.*
 
 /**

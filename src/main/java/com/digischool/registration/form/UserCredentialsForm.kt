@@ -1,13 +1,13 @@
 package com.digischool.registration.form
 
-import com.digischool.entity.User
+import com.digischool.user.User
 import tornadofx.*
 
 /**
  * @author ddorochov
  */
 class UserCredentialsForm : View("Credentials") {
-    private val user: CredentialsModel by inject()
+    private val user: UserCredentialsModel by inject()
 
     override val root = form {
         fieldset("Credentials") {
@@ -20,7 +20,7 @@ class UserCredentialsForm : View("Credentials") {
         }
     }
 
-    class CredentialsModel : ItemViewModel<User>() {
+    class UserCredentialsModel : ItemViewModel<User>() {
         val login = bind { item?.observable(User::login) }
         val password = bind { item?.observable(User::password) }
     }

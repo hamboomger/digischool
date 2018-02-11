@@ -1,6 +1,6 @@
-package com.digischool.repository
+package com.digischool.user
 
-import com.digischool.entity.Student
+import com.digischool.user.Student
 import org.springframework.data.repository.CrudRepository
 import org.springframework.stereotype.Repository
 

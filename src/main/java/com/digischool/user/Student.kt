@@ -1,5 +1,8 @@
-package com.digischool.entity
+package com.digischool.user
 
+import com.digischool.entity.Diploma
+import com.digischool.entity.InterestGroup
+import com.digischool.entity.StudyProgress
 import javax.persistence.*
 import javax.validation.constraints.Max
 import javax.validation.constraints.Min
@@ -29,4 +32,6 @@ open class Student(
 
         @Embedded
         var studyProgress: StudyProgress = StudyProgress()
-) : User(id, name, surname, email, login, password)
+) : User(id, name, surname, email, login, password) {
+    constructor() : this(-1, "", "", "", "", "", -1)
+}

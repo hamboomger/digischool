@@ -1,5 +1,6 @@
-package com.digischool.entity
+package com.digischool.user
 
+import com.digischool.entity.Subject
 import javax.persistence.Entity
 import javax.persistence.ManyToMany
 

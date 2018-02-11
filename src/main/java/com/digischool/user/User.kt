@@ -1,4 +1,4 @@
-package com.digischool.entity
+package com.digischool.user
 
 import javax.persistence.*
 
@@ -9,7 +9,7 @@ import javax.persistence.*
 open class User(
         @Id
         @GeneratedValue
-        var id: Int,
+        var id: Int?,
         var name: String,
         var surname: String,
 
@@ -21,5 +21,5 @@ open class User(
         var password: String
 ) {
     /** Empty constructor */
-    constructor() : this(-1, "", "", "", "", "")
+    constructor() : this(null, "", "", "", "", "")
 }

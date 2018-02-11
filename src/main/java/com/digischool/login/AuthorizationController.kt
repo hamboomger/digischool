@@ -1,6 +1,6 @@
 package com.digischool.login
 
-import com.digischool.repository.StudentRepository
+import com.digischool.user.StudentRepository
 import org.springframework.stereotype.Controller
 
 /**

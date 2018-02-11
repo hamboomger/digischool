@@ -1,25 +1,31 @@
 package com.digischool.registration.form
 
-import com.digischool.entity.Student
-import javafx.util.converter.NumberStringConverter
+import com.digischool.user.Student
+import com.digischool.user.StudentModel
+import com.digischool.user.UsersManager
+import javafx.util.converter.IntegerStringConverter
 import tornadofx.*
-
 /**
  * @author ddorochov
  */
 class StudentIndexGenerationForm: View() {
-    val student: StudentIndexModel by inject()
+    val student: StudentModel by inject()
+    val usersManager: UsersManager by di()
 
     override val root = form {
         fieldset {
             field("Generate index") {
-//                textfield(student.index, NumberStringConverter())
+                textfield(student.index, IntegerStringConverter())
+                button("Generate").action {
+                    student.index.setValue(usersManager.generateStudentIndex())
+                }
             }
         }
     }
 
-    class StudentIndexModel: ItemViewModel<Student>() {
-        val index = bind { item.observable(Student::index) }
+    override fun onSave() {
+        isComplete = student.commit(student.index)
     }
 
 }
+
