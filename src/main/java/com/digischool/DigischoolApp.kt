@@ -19,19 +19,19 @@ import kotlin.reflect.KClass
 @EnableJpaRepositories
 class DigischoolApp : App(LoginForm::class) {
 
-    private lateinit var springContext: ConfigurableApplicationContext
-
-    override fun init() {
-        this.springContext = SpringApplication.run(DigischoolApp::class.java)
-        // setting spring context as a default DI container in TornadoFX
-        FX.dicontainer = object : DIContainer {
-            override fun <T : Any> getInstance(type: KClass<T>): T = springContext.getBean(type.java)
-            override fun <T : Any> getInstance(type: KClass<T>, name: String): T = springContext.getBean(type.java,name)
-        }
-    }
-
-    override fun createPrimaryScene(view: UIComponent): Scene {
-        return super.createPrimaryScene(view)
-    }
+//    private lateinit var springContext: ConfigurableApplicationContext
+//
+//    override fun init() {
+//        this.springContext = SpringApplication.run(DigischoolApp::class.java)
+//        // setting spring context as a default DI container in TornadoFX
+//        FX.dicontainer = object : DIContainer {
+//            override fun <T : Any> getInstance(type: KClass<T>): T = springContext.getBean(type.java)
+//            override fun <T : Any> getInstance(type: KClass<T>, name: String): T = springContext.getBean(type.java,name)
+//        }
+//    }
+//
+//    override fun createPrimaryScene(view: UIComponent): Scene {
+//        return super.createPrimaryScene(view)
+//    }
 
 }

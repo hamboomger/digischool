@@ -8,7 +8,9 @@ import tornadofx.observable
 /**
  * @author ddorochov
  */
-class StudentModel : ItemViewModel<Student>() {
+class StudentModel() : ItemViewModel<Student>() {
+    constructor(student: Student) : this() { this.item = student }
+
     val name = bind { item?.observable(Student::name) }
     val surname = bind { item?.observable(Student::surname) }
     val email = bind { item?.observable(Student::email) }

@@ -1,6 +1,9 @@
 package com.digischool.login
 
 import com.digischool.registration.StudentRegistrationWizard
+import com.digischool.student.view.StudentBaseView
+import com.digischool.user.Student
+import com.digischool.user.StudentModel
 import javafx.geometry.Pos
 import tornadofx.*
 
@@ -8,7 +11,7 @@ import tornadofx.*
  * @author ddorochov
  */
 class LoginForm : View("Login") {
-    private val authController: AuthorizationController by di()
+//    private val authController: AuthorizationController by di()
     private val userModel = UserCredentialsModel(UserLoginCredentials())
 
     override val root = form {
@@ -32,7 +35,8 @@ class LoginForm : View("Login") {
                 button("Log in") {
                     enableWhen(userModel.valid)
                     action {
-
+                        replaceWith(StudentBaseView::class, sizeToScene = true)
+                        scope.set(StudentModel(Student()))
                     }
                 }
 
