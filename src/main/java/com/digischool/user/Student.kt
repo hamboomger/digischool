@@ -4,8 +4,6 @@ import com.digischool.entity.Diploma
 import com.digischool.entity.InterestGroup
 import com.digischool.entity.StudyProgress
 import javax.persistence.*
-import javax.validation.constraints.Max
-import javax.validation.constraints.Min
 
 /**
  * @author ddorochov
@@ -19,10 +17,7 @@ open class Student(
         login: String,
         password: String,
 
-        @Column(name = "studentIndex")
-        @Min(5)
-        @Max(5)
-        var index: Int,
+        var studentIndex: Int,
 
         @ManyToMany(targetEntity = InterestGroup::class)
         var interestGroups: List<InterestGroup> = mutableListOf(),

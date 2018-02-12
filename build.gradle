@@ -32,10 +32,6 @@ dependencies {
     compile group: "org.springframework.boot",
             name: "spring-boot-starter-data-jpa"
 
-    compile group: 'javax.validation',
-            name: 'validation-api',
-            version: '1.0.0.GA'
-
     compile group: 'mysql',
             name: 'mysql-connector-java',
             version: '5.1.40'

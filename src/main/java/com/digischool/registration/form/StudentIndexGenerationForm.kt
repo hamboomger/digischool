@@ -1,14 +1,14 @@
 package com.digischool.registration.form
 
-import com.digischool.user.Student
 import com.digischool.user.StudentModel
 import com.digischool.user.UsersManager
 import javafx.util.converter.IntegerStringConverter
 import tornadofx.*
+
 /**
  * @author ddorochov
  */
-class StudentIndexGenerationForm: View() {
+class StudentIndexGenerationForm: View("Generate index") {
     val student: StudentModel by inject()
     val usersManager: UsersManager by di()
 
