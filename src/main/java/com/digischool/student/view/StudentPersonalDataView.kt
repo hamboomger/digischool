@@ -11,7 +11,8 @@ class StudentPersonalDataView : View() {
 
     override val root = form {
         fieldset {
-            field("Name").label()
+            field("Name").label(student.name)
+            field("Surname").label(student.surname)
         }
     }
 }
