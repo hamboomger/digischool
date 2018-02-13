@@ -34,8 +34,8 @@ class StudentPersonalDataView : View("Personal data") {
     }
 
     init {
-        root.minWidth = 400.0
-        root.minHeight = 400.0
+        root.minWidth = 300.0
+        root.minHeight = 300.0
     }
 
 }

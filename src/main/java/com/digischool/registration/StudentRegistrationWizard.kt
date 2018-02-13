@@ -3,7 +3,6 @@ package com.digischool.registration
 import com.digischool.registration.form.PersonalDataForm
 import com.digischool.registration.form.StudentIndexGenerationForm
 import com.digischool.registration.form.UserCredentialsForm
-import com.digischool.student.view.StudentPersonalDataView
 import com.digischool.user.Student
 import com.digischool.user.StudentModel
 import tornadofx.Wizard

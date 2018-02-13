@@ -1,15 +1,25 @@
 package com.digischool.interest_group.view
 
-import tornadofx.View
-import tornadofx.button
-import tornadofx.fitToParentSize
-import tornadofx.vbox
+import com.digischool.registration.StudentRegistrationWizard
+import tornadofx.*
 
 class StudentInterestGroupsView : View("Interest groups") {
+
     override val root = vbox {
         button("Create") {
-            fitToParentSize()
+            fitToParentWidth()
+            action {
+                find(CreateInterestGroupWizard::class).openWindow()
+            }
+        }
 
+        style {
+            backgroundColor += c("aaa")
         }
     }
+
+    init {
+        root.minWidth = 150.0
+    }
+
 }
