@@ -1,17 +1,18 @@
 package com.digischool.interest_group.view
 
-import tornadofx.View
+import com.digischool.entity.InterestGroup
+import tornadofx.ItemViewModel
 import tornadofx.Wizard
-import tornadofx.form
+import tornadofx.observable
 
 class CreateInterestGroupWizard: Wizard("Create interest group") {
-    init {
 
+    init {
+        add(CreateInterestGroupStep1::class)
     }
+
 }
 
-class CreateInterestGroupStep1: View() {
-    override val root = form {
-
-    }
+class InterestGroupModel : ItemViewModel<InterestGroup>() {
+    var subject = bind { item.observable(InterestGroup::subject) }
 }
