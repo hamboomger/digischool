@@ -9,9 +9,9 @@ import javax.persistence.*
 class Subject(
         @Id
         @GeneratedValue
-        val id: Int,
+        val id: Int? = null,
         val name: String,
 
         @OneToMany(targetEntity = Topic::class, cascade = arrayOf(CascadeType.ALL))
-        val topics: List<Topic>
+        val topics: List<Topic> = mutableListOf()
 )

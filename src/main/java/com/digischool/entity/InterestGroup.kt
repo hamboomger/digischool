@@ -14,14 +14,14 @@ class InterestGroup(
         val id: Int,
 
         @ManyToMany(targetEntity = Student::class)
-        val students: List<Student>,
+        var students: List<Student> = mutableListOf(),
 
         @ManyToOne
-        val subject: Subject,
+        var subject: Subject,
 
         @ManyToOne
-        val teacher: Teacher,
+        var teacher: Teacher,
 
         @OneToOne
-        val meetingSchedule: MeetingSchedule
+        var meetingSchedule: MeetingSchedule
 )

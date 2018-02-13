@@ -28,7 +28,6 @@ class LoginForm : View("Login") {
 
             hbox {
                 hyperlink("Sign up").action {
-                    close()
                     find<StudentRegistrationWizard>().openWindow()
                 }
 
