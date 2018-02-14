@@ -2,16 +2,17 @@ package com.digischool.login
 
 import com.digischool.registration.StudentRegistrationWizard
 import com.digischool.student.view.StudentBaseView
-import com.digischool.user.Student
 import com.digischool.user.StudentModel
 import javafx.geometry.Pos
+import javafx.scene.control.ButtonType
 import tornadofx.*
+import java.lang.UnsupportedOperationException
 
 /**
  * @author ddorochov
  */
 class LoginForm : View("Login") {
-//    private val authController: AuthorizationController by di()
+    private val authController: AuthorizationController by di()
     private val userModel = UserCredentialsModel(UserLoginCredentials())
 
     override val root = form {
@@ -28,25 +29,43 @@ class LoginForm : View("Login") {
 
             hbox {
                 hyperlink("Sign up").action {
-                    close()
                     find<StudentRegistrationWizard>().openWindow()
                 }
 
                 button("Log in") {
                     enableWhen(userModel.valid)
                     action {
-                        replaceWith(StudentBaseView::class, sizeToScene = true)
-                        scope.set(StudentModel(Student()))
+                        userModel.commit()
+                        if(authoriseUser(userModel.user)) {
+                            find<StudentBaseView>().openWindow(owner = null)
+                            close()
+                        } else {
+                            information("User or password is incorrect", buttons = ButtonType.OK)
+                        }
                     }
                 }
 
-                alignment = Pos.CENTER_RIGHT
+                style {
+                    alignment = Pos.CENTER_RIGHT
+                }
             }
 
         }
     }
 
+    private fun authoriseUser(user: UserLoginCredentials) : Boolean {
+        if(user.isTeacher) {
+            throw UnsupportedOperationException("Teacher page is not implemented yet")
+        } else {
+            val student = authController.authoriseStudent(user.login, user.password) ?: return false
+
+            scope.set(StudentModel(student))
+            return true
+        }
+    }
+
     init {
+        icon = resources.imageview("/img/user_circle.png")
         userModel.validate(decorateErrors = false)
     }
 
