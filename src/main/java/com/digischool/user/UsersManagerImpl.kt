@@ -1,10 +1,12 @@
 package com.digischool.user
 
 import com.digischool.util.random
+import org.springframework.stereotype.Service
 
 /**
  * @author ddorochov
  */
+@Service
 class UsersManagerImpl(
         private val studentRepository: StudentRepository,
         private val teacherRepository: TeacherRepository
@@ -12,6 +14,10 @@ class UsersManagerImpl(
 
     override fun registerStudent(student: Student) {
         studentRepository.save(student)
+    }
+
+    override fun registerTeacher(teacher: Teacher) {
+        teacherRepository.save(teacher)
     }
 
     override fun generateStudentIndex(): Int {
@@ -23,8 +29,12 @@ class UsersManagerImpl(
         }
     }
 
-    override fun registerTeacher(teacher: Teacher) {
-        teacherRepository.save(teacher)
+    override fun getTeacherByLoginAndPassword(login: String, password: String): Teacher? {
+        return teacherRepository.findByLoginAndPassword(login, password)
+    }
+
+    override fun getStudentByLoginAndPassword(login: String, password: String): Student? {
+        return studentRepository.findByLoginAndPassword(login, password)
     }
 
 }
