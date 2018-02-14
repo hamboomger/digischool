@@ -12,7 +12,7 @@ import tornadofx.Wizard
  * @author ddorochov
  */
 class StudentRegistrationWizard : Wizard("Registration", "Students registration form") {
-//    val registrationController: RegistrationController by di()
+    val registrationController: RegistrationController by di()
 
     val personalDataModel: PersonalDataForm.PersonalDataModel by inject()
     val userCredentialsModel: UserCredentialsForm.UserCredentialsModel by inject()
@@ -22,6 +22,7 @@ class StudentRegistrationWizard : Wizard("Registration", "Students registration 
     val student = Student()
 
     init {
+        graphic = resources.imageview("/img/user_plus.png")
         personalDataModel.item = student
         userCredentialsModel.item = student
         studentModel.item = student
@@ -35,8 +36,8 @@ class StudentRegistrationWizard : Wizard("Registration", "Students registration 
     }
 
     override fun onSave() {
-//        registrationController.registerStudent(student)
-//        replaceWith(StudentPersonalDataView::class)
+        registrationController.registerStudent(student)
+        replaceWith(StudentPersonalDataView::class)
     }
     
 }
