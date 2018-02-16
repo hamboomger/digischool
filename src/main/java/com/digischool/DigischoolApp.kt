@@ -6,10 +6,7 @@ import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.context.ConfigurableApplicationContext
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories
-import tornadofx.App
-import tornadofx.DIContainer
-import tornadofx.FX
-import tornadofx.UIComponent
+import tornadofx.*
 import kotlin.reflect.KClass
 
 /**
@@ -17,21 +14,21 @@ import kotlin.reflect.KClass
  */
 @SpringBootApplication
 @EnableJpaRepositories
-class DigischoolApp : App(LoginForm::class) {
+class DigischoolApp : App(LoginForm::class, MainStylesheet::class) {
 
-//    private lateinit var springContext: ConfigurableApplicationContext
-//
-//    override fun init() {
-//        this.springContext = SpringApplication.run(DigischoolApp::class.java)
-//        // setting spring context as a default DI container in TornadoFX
-//        FX.dicontainer = object : DIContainer {
-//            override fun <T : Any> getInstance(type: KClass<T>): T = springContext.getBean(type.java)
-//            override fun <T : Any> getInstance(type: KClass<T>, name: String): T = springContext.getBean(type.java,name)
-//        }
-//    }
-//
-//    override fun createPrimaryScene(view: UIComponent): Scene {
-//        return super.createPrimaryScene(view)
-//    }
+    override fun init() {
+        val springContext = SpringApplication.run(DigischoolApp::class.java)
+        // setting spring context as a default DI container in TornadoFX
+        FX.dicontainer = object : DIContainer {
+            override fun <T : Any> getInstance(type: KClass<T>): T = springContext.getBean(type.java)
+            override fun <T : Any> getInstance(type: KClass<T>, name: String): T = springContext.getBean(type.java,name)
+        }
+        reloadStylesheetsOnFocus()
+        reloadViewsOnFocus()
+    }
+
+    override fun createPrimaryScene(view: UIComponent): Scene {
+        return super.createPrimaryScene(view)
+    }
 
 }

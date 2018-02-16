@@ -1,24 +1,29 @@
 package com.digischool.login
 
+import com.digischool.user.Student
 import com.digischool.user.StudentRepository
+import com.digischool.user.Teacher
+import com.digischool.user.UsersManager
 import org.springframework.stereotype.Controller
 
 /**
  * @author ddorochov
  */
 @Controller
-class AuthorizationController(val studentRepository: StudentRepository) {
+class AuthorizationController(val usersManager: UsersManager) {
 
     /**
-     * @return userId, null if user not exists
+     * @return student, null if user not exists
      */
-    fun authorise(login: String, password: String, isTeacher: Boolean) : Int? {
-        if(!isTeacher) {
-            val student = studentRepository.findByLoginAndPassword(login, password)
-            return student?.id
-        } else {
-            return null
-        }
+    fun authoriseStudent(login: String, password: String) : Student? {
+        return usersManager.getStudentByLoginAndPassword(login, password)
+    }
+
+    /**
+     * @return teacher, null if user not exists
+     */
+    fun authoriseTeacher(login: String, password: String) : Teacher? {
+        return usersManager.getTeacherByLoginAndPassword(login, password)
     }
 
 }

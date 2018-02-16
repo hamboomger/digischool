@@ -7,4 +7,6 @@ import org.springframework.stereotype.Repository
  * @author ddorochov
  */
 @Repository
-interface TeacherRepository : CrudRepository<Teacher, Long>
+interface TeacherRepository : CrudRepository<Teacher, Long> {
+    fun findByLoginAndPassword(login: String, password: String): Teacher
+}
