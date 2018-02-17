@@ -3,6 +3,7 @@ package com.digischool.entity
 import com.digischool.interest_group.InterestGroup
 import java.time.DayOfWeek
 import java.time.LocalDate
+import java.time.LocalTime
 import javax.persistence.*
 
 /**
@@ -21,5 +22,5 @@ class MeetingSchedule(
         val meetingDays: List<DayOfWeek>,
 
         @ElementCollection
-        val cancelledMeetings: List<LocalDate>
+        val meetingTime: LocalTime
 )

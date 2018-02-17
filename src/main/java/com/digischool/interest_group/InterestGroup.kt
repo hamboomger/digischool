@@ -24,6 +24,6 @@ class InterestGroup(
         @ManyToOne
         var teacher: Teacher,
 
-        @OneToOne
-        var meetingSchedule: MeetingSchedule
+        @OneToMany(targetEntity = MeetingSchedule::class)
+        var meetingSchedules: List<MeetingSchedule>
 )
