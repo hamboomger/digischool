@@ -1,5 +1,7 @@
-package com.digischool.entity
+package com.digischool.interest_group
 
+import com.digischool.entity.MeetingSchedule
+import com.digischool.entity.Subject
 import com.digischool.user.Student
 import com.digischool.user.Teacher
 import javax.persistence.*

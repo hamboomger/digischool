@@ -1,13 +1,14 @@
 package com.digischool.user
 
 import com.digischool.entity.*
+import com.digischool.interest_group.InterestGroup
 import javax.persistence.*
 
 /**
  * @author ddorochov
  */
 @Entity
-open class Student(
+class Student(
         id: Int? = null,
         name: String,
         surname: String,

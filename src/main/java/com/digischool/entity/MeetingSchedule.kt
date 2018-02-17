@@ -1,5 +1,6 @@
 package com.digischool.entity
 
+import com.digischool.interest_group.InterestGroup
 import java.time.DayOfWeek
 import java.time.LocalDate
 import javax.persistence.*

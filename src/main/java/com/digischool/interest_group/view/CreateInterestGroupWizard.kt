@@ -1,6 +1,6 @@
 package com.digischool.interest_group.view
 
-import com.digischool.entity.InterestGroup
+import com.digischool.interest_group.InterestGroup
 import tornadofx.ItemViewModel
 import tornadofx.Wizard
 import tornadofx.observable
