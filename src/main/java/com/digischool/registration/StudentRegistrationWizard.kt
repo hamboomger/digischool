@@ -5,13 +5,13 @@ import com.digischool.registration.form.StudentIndexGenerationForm
 import com.digischool.registration.form.UserCredentialsForm
 import com.digischool.user.Student
 import com.digischool.user.StudentModel
-import tornadofx.Wizard
+import tornadofx.*
 
 /**
  * @author ddorochov
  */
 class StudentRegistrationWizard : Wizard("Registration", "Students registration form") {
-    val registrationController: RegistrationController by di()
+    val registrationController: RegistrationController by inject()
 
     val personalDataModel: PersonalDataForm.PersonalDataModel by inject()
     val userCredentialsModel: UserCredentialsForm.UserCredentialsModel by inject()
@@ -36,7 +36,6 @@ class StudentRegistrationWizard : Wizard("Registration", "Students registration 
 
     override fun onSave() {
         registrationController.registerStudent(student)
-        replaceWith(StudentPersonalDataView::class)
     }
     
 }
