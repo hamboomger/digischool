@@ -11,4 +11,6 @@ import org.springframework.stereotype.Repository
 interface StudentRepository: CrudRepository<Student, Int> {
     fun findByLoginAndPassword(login: String, password: String): Student?
     fun findByStudentIndex(index: Int): Student?
+    fun findByLogin(login: String): Student?
+    fun findByEmail(email: String): Student?
 }
