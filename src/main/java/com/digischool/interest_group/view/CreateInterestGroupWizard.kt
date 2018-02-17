@@ -9,10 +9,12 @@ class CreateInterestGroupWizard: Wizard("Create interest group") {
 
     init {
         add(CreateInterestGroupStep1::class)
+        add(CreateInterestGroupStep2::class)
     }
 
 }
 
 class InterestGroupModel : ItemViewModel<InterestGroup>() {
     var subject = bind { item.observable(InterestGroup::subject) }
+    var meetingSchedules = bind { item.observable(InterestGroup::meetingSchedules) }
 }
