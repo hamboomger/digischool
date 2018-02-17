@@ -36,6 +36,10 @@ class StudentRegistrationWizard : Wizard("Registration", "Students registration 
 
     override fun onSave() {
         registrationController.registerStudent(student)
+        currentStage?.close()
     }
+
+    override val canFinish = personalDataModel.valid.and(
+                    userCredentialsModel.valid).and(studentModel.valid)
     
 }

@@ -34,15 +34,16 @@ class LoginForm : View("Login") {
 
                 button("Log in") {
                     enableWhen(userModel.valid)
+
                     action {
-                        userModel.commit()
-                        if(authoriseUser(userModel.user)) {
+                        if(authoriseUser()) {
                             find<StudentBaseView>().openWindow(owner = null)
-                            close()
+                            currentStage?.close()
                         } else {
                             information("User or password is incorrect", buttons = ButtonType.OK)
                         }
                     }
+
                 }
 
                 style {
@@ -53,14 +54,17 @@ class LoginForm : View("Login") {
         }
     }
 
-    private fun authoriseUser(user: UserLoginCredentials) : Boolean {
-        if(user.isTeacher) {
-            throw UnsupportedOperationException("Teacher page is not implemented yet")
-        } else {
-            val student = authController.authoriseStudent(user.login, user.password) ?: return false
+    private fun authoriseUser() : Boolean {
+        userModel.commit()
+        if(!userModel.isTeacher.value) {
+            val student = authController.authoriseStudent(
+                    userModel.login.value, userModel.password.value) ?: return false
 
-            scope.set(StudentModel(student))
+            val studentModel = authController.createNewStudentModel(student)
+            setInScope(studentModel)
             return true
+        } else {
+            throw UnsupportedOperationException("Teacher page is not implemented yet")
         }
     }
 

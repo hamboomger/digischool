@@ -1,9 +1,8 @@
 package com.digischool.user
 
-import com.digischool.entity.InterestGroup
-import javafx.collections.ObservableList
-import tornadofx.ItemViewModel
-import tornadofx.observable
+import com.digischool.util.observableList
+import com.digischool.util.observableSet
+import tornadofx.*
 
 /**
  * @author ddorochov
@@ -17,7 +16,7 @@ class StudentModel() : ItemViewModel<Student>() {
     val login = bind { item?.observable(Student::login) }
     val password = bind { item?.observable(Student::password) }
     val index = bind { item?.observable(Student::studentIndex) }
-//    val interestGroups = bind<ObservableList<InterestGroup>, InterestGroup, ObservableList<InterestGroup>> { item?.interestGroups?.observable() }
-//    val diplomas = bind { item?.observable(Student::diplomas) }
-//    val studyProgress = bind { item?.observable(Student::interestGroups) }
+    val interestGroups = bind { observableSet(item?.interestGroups) }
+    val diplomas = bind { observableSet(item?.interestGroups) }
+    val subjectsStatuses = bind { observableSet(item?.subjectsStatuses) }
 }

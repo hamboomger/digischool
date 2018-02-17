@@ -1,7 +1,7 @@
 package com.digischool.login
 
 import com.digischool.user.Student
-import com.digischool.user.StudentRepository
+import com.digischool.user.StudentModel
 import com.digischool.user.Teacher
 import com.digischool.user.UsersManager
 import org.springframework.stereotype.Controller
@@ -25,5 +25,7 @@ class AuthorizationController(val usersManager: UsersManager) {
     fun authoriseTeacher(login: String, password: String) : Teacher? {
         return usersManager.getTeacherByLoginAndPassword(login, password)
     }
+
+    fun createNewStudentModel(student: Student) = StudentModel(student)
 
 }
