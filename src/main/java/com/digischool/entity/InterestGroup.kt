@@ -13,8 +13,8 @@ class InterestGroup(
         @GeneratedValue
         val id: Int,
 
-        @ManyToMany(targetEntity = Student::class)
-        var students: List<Student> = mutableListOf(),
+        @ManyToMany(targetEntity = Student::class, fetch = FetchType.EAGER)
+        var students: MutableSet<Student> = mutableSetOf(),
 
         @ManyToOne
         var subject: Subject,
