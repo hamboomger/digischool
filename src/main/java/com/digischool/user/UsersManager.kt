@@ -16,4 +16,8 @@ interface UsersManager {
     fun getStudentByLoginAndPassword(login: String, password: String) : Student?
 
     fun generateStudentIndex(): Int
+
+    fun containsStudentWithEmail(email: String): Boolean
+
+    fun containsStudentWithLogin(login: String): Boolean
 }

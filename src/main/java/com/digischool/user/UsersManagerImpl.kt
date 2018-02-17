@@ -37,4 +37,12 @@ class UsersManagerImpl(
         return studentRepository.findByLoginAndPassword(login, password)
     }
 
+    override fun containsStudentWithEmail(email: String): Boolean {
+        return studentRepository.findByEmail(email) != null
+    }
+
+    override fun containsStudentWithLogin(login: String): Boolean {
+        return studentRepository.findByLogin(login) != null
+    }
+
 }
