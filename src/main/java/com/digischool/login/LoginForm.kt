@@ -60,8 +60,7 @@ class LoginForm : View("Login") {
             val student = authController.authoriseStudent(
                     userModel.login.value, userModel.password.value) ?: return false
 
-            val studentModel = authController.createNewStudentModel(student)
-            setInScope(studentModel)
+            setInScope(StudentModel(student))
             return true
         } else {
             throw UnsupportedOperationException("Teacher page is not implemented yet")

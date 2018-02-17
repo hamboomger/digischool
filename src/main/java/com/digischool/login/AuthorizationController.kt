@@ -26,6 +26,4 @@ class AuthorizationController(val usersManager: UsersManager) {
         return usersManager.getTeacherByLoginAndPassword(login, password)
     }
 
-    fun createNewStudentModel(student: Student) = StudentModel(student)
-
 }
