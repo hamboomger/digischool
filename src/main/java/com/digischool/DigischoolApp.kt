@@ -1,6 +1,9 @@
 package com.digischool
 
+import com.digischool.entity.Subject
+import com.digischool.entity.Topic
 import com.digischool.login.LoginForm
+import com.digischool.subject.SubjectsManager
 import com.digischool.user.Student
 import com.digischool.user.UsersManager
 import javafx.scene.Scene
@@ -30,6 +33,7 @@ class DigischoolApp : App(LoginForm::class, MainStylesheet::class) {
         reloadViewsOnFocus()
 
         setDefaultUser(springContext)
+        setDefaultSubjects(springContext)
     }
 
     override fun createPrimaryScene(view: UIComponent): Scene {
@@ -44,6 +48,12 @@ class DigischoolApp : App(LoginForm::class, MainStylesheet::class) {
                         email = "sparrow@gmail.com",
                         studentIndex = 12345)
         )
+    }
+
+    private fun setDefaultSubjects(springContext: ConfigurableApplicationContext) {
+        val subjectsManager = springContext.getBean(SubjectsManager::class.java)
+        subjectsManager.addSubject(Subject(name = "Math"))
+        subjectsManager.addSubject(Subject(name = "Chemistry"))
     }
 
 }
