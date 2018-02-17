@@ -1,8 +1,6 @@
 package com.digischool.user
 
-import com.digischool.entity.Diploma
-import com.digischool.entity.InterestGroup
-import com.digischool.entity.StudyProgress
+import com.digischool.entity.*
 import javax.persistence.*
 
 /**
@@ -10,23 +8,31 @@ import javax.persistence.*
  */
 @Entity
 open class Student(
-        id: Int,
+        id: Int? = null,
         name: String,
         surname: String,
         email: String,
         login: String,
         password: String,
 
-        var studentIndex: Int,
+        open var studentIndex: Int,
 
-        @ManyToMany(targetEntity = InterestGroup::class)
-        var interestGroups: List<InterestGroup> = mutableListOf(),
+        @ManyToMany(targetEntity = InterestGroup::class, fetch = FetchType.EAGER)
+        open var interestGroups: MutableSet<InterestGroup> = mutableSetOf(),
 
-        @ManyToMany(targetEntity = Diploma::class)
-        var diplomas: List<Diploma> = mutableListOf(),
+        @ManyToMany(targetEntity = Diploma::class, fetch = FetchType.EAGER)
+        open var diplomas: MutableSet<Diploma> = mutableSetOf(),
 
-        @Embedded
-        var studyProgress: StudyProgress = StudyProgress()
+        @OneToMany(targetEntity = StudentSubjectStatus::class, fetch = FetchType.EAGER)
+        open var subjectsStatuses: MutableSet<StudentSubjectStatus> = mutableSetOf()
+
 ) : User(id, name, surname, email, login, password) {
+
     constructor() : this(-1, "", "", "", "", "", -1)
+
+    val completedSubjects : List<Subject>
+        get() = subjectsStatuses
+                .filter { it.completed }
+                .map { it.subject }
+
 }

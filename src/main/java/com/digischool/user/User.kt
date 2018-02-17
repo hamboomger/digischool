@@ -9,16 +9,16 @@ import javax.persistence.*
 open class User(
         @Id
         @GeneratedValue
-        var id: Int?,
-        var name: String,
-        var surname: String,
+        open var id: Int? = null,
+        open var name: String,
+        open var surname: String,
 
         @Column(unique = true)
-        var email: String,
+        open var email: String,
 
         @Column(unique = true)
-        var login: String,
-        var password: String
+        open var login: String,
+        open var password: String
 ) {
     /** Empty constructor */
     constructor() : this(null, "", "", "", "", "")
