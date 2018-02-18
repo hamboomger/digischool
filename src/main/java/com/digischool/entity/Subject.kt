@@ -14,4 +14,7 @@ class Subject(
 
         @OneToMany(targetEntity = Topic::class, cascade = arrayOf(CascadeType.ALL))
         val topics: List<Topic> = mutableListOf()
-)
+) {
+
+    constructor() : this(null, "")
+}

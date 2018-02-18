@@ -5,7 +5,9 @@ import javafx.beans.property.SimpleListProperty
 import javafx.beans.property.SimpleSetProperty
 import javafx.beans.value.ObservableValue
 import javafx.collections.FXCollections
+import javafx.scene.control.ListView
 import javafx.scene.control.PasswordField
+import javafx.scene.layout.Pane
 import tornadofx.*
 import java.util.*
 
@@ -38,4 +40,9 @@ fun PasswordField.requirements(minLength: Int) {
             error("You should have at least 5 symbols")
         } else null
     }
+}
+
+fun <T> Pane.listview(values: SimpleSetProperty<T>, op: ListView<T>.() -> Unit = {}) {
+    val listValues = values.toMutableList().observable()
+    listview(listValues, op)
 }
