@@ -13,7 +13,7 @@ import javax.persistence.*
 class InterestGroup(
         @Id
         @GeneratedValue
-        val id: Int,
+        val id: Int? = null,
 
         @ManyToMany(targetEntity = Student::class, fetch = FetchType.EAGER)
         var students: MutableSet<Student> = mutableSetOf(),
@@ -22,8 +22,11 @@ class InterestGroup(
         var subject: Subject,
 
         @ManyToOne
-        var teacher: Teacher,
+        var teacher: Teacher? = null,
 
         @OneToMany(targetEntity = MeetingSchedule::class)
-        var meetingSchedules: List<MeetingSchedule>
-)
+        var meetingSchedules: MutableSet<MeetingSchedule> = mutableSetOf()
+) {
+
+    constructor() : this(null, mutableSetOf(), Subject(), null)
+}

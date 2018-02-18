@@ -1,7 +1,7 @@
 package com.digischool
 
-import tornadofx.Stylesheet
-import tornadofx.pt
+import tornadofx.*
+import javax.swing.text.html.CSS
 
 class MainStylesheet : Stylesheet() {
     init {

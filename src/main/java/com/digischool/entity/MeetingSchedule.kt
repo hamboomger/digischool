@@ -13,14 +13,13 @@ import javax.persistence.*
 class MeetingSchedule(
         @Id
         @GeneratedValue
-        val id: Int,
+        var id: Int? = null,
 
         @OneToOne
-        val interestGroup: InterestGroup,
+        var interestGroup: InterestGroup,
 
         @ElementCollection
-        val meetingDays: List<DayOfWeek>,
+        var meetingDays: MutableList<DayOfWeek> = mutableListOf(),
 
-        @ElementCollection
-        val meetingTime: LocalTime
+        var meetingTime: LocalTime
 )

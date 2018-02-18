@@ -9,7 +9,7 @@ class StudentInterestGroupsView : View("Interest groups") {
         button("Create") {
             fitToParentWidth()
             action {
-                find(CreateInterestGroupWizard::class).openWindow()
+                find(CreateInterestGroupView::class).openWindow()
             }
         }
 
