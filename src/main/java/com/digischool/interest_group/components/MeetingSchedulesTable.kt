@@ -21,6 +21,7 @@ class MeetingSchedulesTable(items: ObservableList<MeetingSchedule>) : TableView<
                 it.getDisplayName(TextStyle.FULL, Locale.ENGLISH)
             }.joinToString()
         }
+        column("Place", MeetingSchedule::place  )
 
         maxHeight = 150.0
     }

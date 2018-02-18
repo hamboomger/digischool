@@ -30,7 +30,9 @@ class CreateInterestGroupView : View("Create new interest group") {
             label("Select the subject:")
             combobox(interestGroup.subject, allSubjects) {
                 cellFormat { text = it.name }
-            }.required()
+                required()
+                fitToParentWidth()
+            }
 
             interestGroup.subject.value = allSubjects[0] // set default value
         }
@@ -46,9 +48,11 @@ class CreateInterestGroupView : View("Create new interest group") {
             alignment = Pos.CENTER
         }
 
+
+        minWidth = 300.0
         style {
             padding = box(10.px)
-            minWidth = 200.px
+            minWidth = 300.px
         }
     }
 }

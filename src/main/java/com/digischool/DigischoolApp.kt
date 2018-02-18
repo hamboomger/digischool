@@ -52,8 +52,16 @@ class DigischoolApp : App(LoginForm::class, MainStylesheet::class) {
 
     private fun setDefaultSubjects(springContext: ConfigurableApplicationContext) {
         val subjectsManager = springContext.getBean(SubjectsManager::class.java)
-        subjectsManager.addSubject(Subject(name = "Math"))
-        subjectsManager.addSubject(Subject(name = "Chemistry"))
+
+        val subjectNames = listOf(
+                "Math", "Chemistry", "Biology",
+                "History", "Music", "Physics",
+                "Literature", "English", "Geography", "Economy")
+
+        for (subjectName in subjectNames) {
+            subjectsManager.addSubject(Subject(name = subjectName))
+        }
+
     }
 
 }

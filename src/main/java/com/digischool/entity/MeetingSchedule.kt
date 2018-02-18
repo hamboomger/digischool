@@ -11,15 +11,17 @@ import javax.persistence.*
  */
 @Entity
 class MeetingSchedule(
-        @Id
-        @GeneratedValue
-        var id: Int? = null,
+    @Id
+    @GeneratedValue
+    var id: Int? = null,
 
-        @OneToOne
-        var interestGroup: InterestGroup,
+    @OneToOne
+    var interestGroup: InterestGroup,
 
-        @ElementCollection
-        var meetingDays: MutableList<DayOfWeek> = mutableListOf(),
+    @ElementCollection
+    var meetingDays: MutableList<DayOfWeek> = mutableListOf(),
 
-        var meetingTime: LocalTime
+    var meetingTime: LocalTime,
+
+    var place: String
 )

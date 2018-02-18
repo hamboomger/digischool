@@ -4,6 +4,7 @@ import com.digischool.entity.MeetingSchedule
 import com.digischool.interest_group.InterestGroupModel
 import com.jfoenix.controls.JFXTimePicker
 import javafx.beans.property.SimpleObjectProperty
+import javafx.beans.property.SimpleStringProperty
 import javafx.geometry.Insets
 import javafx.geometry.Pos
 import tornadofx.*
@@ -18,6 +19,7 @@ class CreateMeetingView : View("Meeting schedule") {
 
     val timePicker = JFXTimePicker()
     val dayOfWeekProperty = SimpleObjectProperty<DayOfWeek>(DayOfWeek.MONDAY)
+    val placeProperty = SimpleStringProperty()
 
     override val root = vbox(spacing = 10) {
         padding = Insets(15.0)
@@ -34,17 +36,24 @@ class CreateMeetingView : View("Meeting schedule") {
             add(timePicker)
         }
 
+        vbox {
+            label("Place:")
+            textfield(placeProperty)
+        }
+
         vbox(alignment = Pos.CENTER) {
             button("Add") {
                 action {
                     val meetingSchedule = MeetingSchedule(
                             interestGroup = interestGroup.item,
                             meetingDays = mutableListOf(dayOfWeekProperty.get()),
-                            meetingTime = timePicker.value)
+                            meetingTime = timePicker.value,
+                            place = placeProperty.value)
 
                     interestGroup.meetingSchedules.add(meetingSchedule)
                     currentStage?.close()
                 }
+                enableWhen(placeProperty.isNotEmpty)
             }
         }
 

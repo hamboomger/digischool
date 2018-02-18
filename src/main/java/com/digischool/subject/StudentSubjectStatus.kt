@@ -1,5 +1,6 @@
-package com.digischool.entity
+package com.digischool.subject
 
+import com.digischool.entity.Subject
 import com.digischool.user.Student
 import javax.persistence.*
 

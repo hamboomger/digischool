@@ -4,6 +4,7 @@ import com.digischool.MainStylesheet
 import com.digischool.interest_group.InterestGroupModel
 import com.digischool.interest_group.components.MeetingSchedulesTable
 import com.digischool.interest_group.components.UsersNamesTable
+import com.digischool.user.StudentModel
 import javafx.geometry.Pos
 import javafx.scene.text.TextAlignment
 import tornadofx.*
@@ -12,6 +13,7 @@ import tornadofx.*
  * @author ddorochov
  */
 class InterestGroupView: View("Interest group") {
+    val student: StudentModel by inject()
     val interestGroup: InterestGroupModel by inject()
 
     override val root = vbox {
@@ -38,7 +40,10 @@ class InterestGroupView: View("Interest group") {
 
         hbox(alignment = Pos.CENTER) {
             button("Ok") {
-                currentStage?.close()
+                action {
+                    student.interestGroups.add(interestGroup.item)
+                    currentStage?.close()
+                }
             }
         }
     }

@@ -2,6 +2,7 @@ package com.digischool.user
 
 import com.digischool.entity.*
 import com.digischool.interest_group.InterestGroup
+import com.digischool.subject.StudentSubjectStatus
 import javax.persistence.*
 
 /**
