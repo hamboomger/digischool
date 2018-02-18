@@ -15,6 +15,8 @@ class InterestGroup(
         @GeneratedValue
         val id: Int? = null,
 
+        var name: String,
+
         @ManyToMany(targetEntity = Student::class, fetch = FetchType.EAGER)
         var students: MutableSet<Student> = mutableSetOf(),
 
@@ -26,7 +28,8 @@ class InterestGroup(
 
         @OneToMany(targetEntity = MeetingSchedule::class)
         var meetingSchedules: MutableSet<MeetingSchedule> = mutableSetOf()
+
 ) {
 
-    constructor() : this(null, mutableSetOf(), Subject(), null)
+    constructor() : this(null, "", mutableSetOf(), Subject(), null)
 }

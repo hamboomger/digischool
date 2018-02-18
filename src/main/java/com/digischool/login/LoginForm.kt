@@ -43,7 +43,6 @@ class LoginForm : View("Login") {
                             information("User or password is incorrect", buttons = ButtonType.OK)
                         }
                     }
-
                 }
 
                 style {

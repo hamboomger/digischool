@@ -1,9 +1,12 @@
 package com.digischool.interest_group.view
 
-import com.digischool.registration.StudentRegistrationWizard
+import com.digischool.interest_group.InterestGroup
+import com.digischool.user.StudentModel
+import com.digischool.util.tableview
 import tornadofx.*
 
 class StudentInterestGroupsView : View("Interest groups") {
+    val student: StudentModel by inject()
 
     override val root = vbox {
         button("Create") {
@@ -11,6 +14,11 @@ class StudentInterestGroupsView : View("Interest groups") {
             action {
                 find(CreateInterestGroupView::class).openWindow()
             }
+        }
+
+        tableview(student.interestGroups) {
+            column("name", InterestGroup::name)
+            column("subject", InterestGroup::subject)
         }
 
         style {

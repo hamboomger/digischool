@@ -8,7 +8,7 @@ import javax.persistence.*
  * @author ddorochov
  */
 @Entity
-class Student(
+open class Student(
         id: Int? = null,
         name: String,
         surname: String,

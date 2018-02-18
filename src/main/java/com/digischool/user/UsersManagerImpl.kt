@@ -20,6 +20,10 @@ class UsersManagerImpl(
         teacherRepository.save(teacher)
     }
 
+    override fun updateStudent(student: Student) {
+        studentRepository.save(student)
+    }
+
     override fun generateStudentIndex(): Int {
         while (true) {
             val index = (10000..99999).random()

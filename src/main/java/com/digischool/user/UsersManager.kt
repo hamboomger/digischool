@@ -11,6 +11,8 @@ interface UsersManager {
 
     fun registerTeacher(teacher: Teacher)
 
+    fun updateStudent(student: Student)
+
     fun getTeacherByLoginAndPassword(login: String, password: String) : Teacher?
 
     fun getStudentByLoginAndPassword(login: String, password: String) : Student?
